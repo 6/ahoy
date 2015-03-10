@@ -5,6 +5,9 @@ class User < ActiveRecord::Base
   validates :provider, presence: true, inclusion: {in: %w[google]}
   validates :uid, presence: true
 
+  has_many :user_organizations, dependent: :destroy
+  has_many :organizations, through: :user_organizations
+
   def self.from_omniauth!(auth)
     user = User.where({
       provider: auth.provider,

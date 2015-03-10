@@ -13,6 +13,10 @@ class ApplicationController < ActionController::Base
     current_user or redirect_to root_path
   end
 
+  def enforce_logged_in!
+    redirect_to root_path  unless current_user
+  end
+
   def ssl_configured?
     !Rails.env.development?
   end
