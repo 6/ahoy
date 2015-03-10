@@ -4,4 +4,4 @@ homepage goes here
   %p Logged in as #{current_user.full_name}
   %p= link_to "Logout", destroy_session_path
 - else
-  %p= link_to "Sign in with Google", "/auth/google"
+  %p= link_to "Sign in with Google", "/auth/google", class: "btn btn-primary"
