@@ -1,0 +1,16 @@
+html, body {
+  height: 100%;
+}
+
+.only-mobile {
+  display: none !important;
+}
+
+@media (max-width: $screen-xs-max) {
+  .hidden-mobile {
+    display: none !important;
+  }
+  .only-mobile {
+    @include display-important;
+  }
+}
