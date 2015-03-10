@@ -1,4 +1,10 @@
 class User < ActiveRecord::Base
+  validates :email, presence: true, email: true
+  validates :given_name, presence: true
+  validates :surname, presence: true
+  validates :provider, presence: true, inclusion: {in: %w[google]}
+  validates :uid, presence: true
+
   def self.from_omniauth!(auth)
     user = User.where({
       provider: auth.provider,

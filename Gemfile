@@ -11,6 +11,7 @@ gem "omniauth-google-oauth2"
 gem 'haml-rails'
 gem 'unicorn'
 gem 'bootstrap-generators'
+gem 'email_validator'
 
 group :development, :test do
   gem 'byebug'

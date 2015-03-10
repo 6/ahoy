@@ -56,6 +56,8 @@ GEM
     columnize (0.9.0)
     debug_inspector (0.0.2)
     debugger-linecache (1.2.0)
+    email_validator (1.5.0)
+      activemodel
     erubis (2.7.0)
     execjs (2.4.0)
     faraday (0.9.1)
@@ -198,6 +200,7 @@ DEPENDENCIES
   bootstrap-generators
   byebug
   coffee-rails (~> 4.1.0)
+  email_validator
   haml-rails
   jquery-rails
   newrelic_rpm
