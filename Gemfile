@@ -12,6 +12,7 @@ gem 'haml-rails'
 gem 'unicorn'
 gem 'bootstrap-generators'
 gem 'email_validator'
+gem 'twilio-ruby'
 
 group :development, :test do
   gem 'byebug'
