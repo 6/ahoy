@@ -4,3 +4,5 @@ Rails.application.config.middleware.use OmniAuth::Builder do
     scope: "email,profile",
   }
 end
+
+OmniAuth.config.on_failure = SessionsController.action(:failure)
