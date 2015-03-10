@@ -9,6 +9,7 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
 gem "omniauth-google-oauth2"
 gem 'haml-rails'
+gem 'unicorn'
 
 group :development, :test do
   gem 'byebug'
