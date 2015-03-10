@@ -1,7 +1,9 @@
-homepage goes here
-
-- if current_user
-  %p Logged in as #{current_user.full_name}
-  %p= link_to "Logout", destroy_session_path
-- else
-  %p= link_to "Sign in with Google", "/auth/google", class: "btn btn-primary"
+.jumbotron
+  %h1 Bananaphone
+  %p • Send and receive SMS in real-time.
+  %p • Know your users - use our simple REST API to fill in user details.
+  %p • Integrates with <a href="http://www.twilio.com">Twilio</a> for scalable, worldwide SMS support.
+  %p
+    %a.btn.btn-lg.btn-social.btn-google-plus{href: "/auth/google"}
+      %i.fa.fa-google-plus
+      Sign in with Google

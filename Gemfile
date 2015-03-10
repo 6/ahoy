@@ -10,6 +10,7 @@ gem 'jquery-rails'
 gem "omniauth-google-oauth2"
 gem 'haml-rails'
 gem 'unicorn'
+gem 'bootstrap-generators'
 
 group :development, :test do
   gem 'byebug'
