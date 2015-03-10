@@ -9,6 +9,10 @@ class Organization < ActiveRecord::Base
   has_many :user_organizations, dependent: :destroy
   has_many :users, through: :user_organizations
 
+  def twilio_client
+    @twilio_client ||= Twilio::REST::Client.new(twilio_account_sid, twilio_auth_token)
+  end
+
 private
 
   def generate_token

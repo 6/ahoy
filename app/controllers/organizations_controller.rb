@@ -1,19 +1,15 @@
 class OrganizationsController < ApplicationController
-  def index
-    @organizations = current_user!.organizations
-  end
-
   def show
     @organization = current_user!.organizations.find(params[:id])
-    @user_organizations = @organization.user_organizations.includes(:user)
   end
 
   def new
-    @organization = current_user.organizations.build
+    @organization = Organization.new
   end
 
   def edit
     @organization = current_user!.organizations.find(params[:id])
+    @user_organizations = @organization.user_organizations.includes(:user)
   end
 
   def create
@@ -38,10 +34,10 @@ class OrganizationsController < ApplicationController
   def destroy
     @organization = current_user!.organizations.find(params[:id])
     if @organization.users.count > 1
-      redirect_to organizations_path, notice: "Can't delete an organization with users."
+      redirect_to edit_organization_path(@organization), notice: "Can't delete an organization with users."
     else
       @organization.destroy!
-      redirect_to organizations_path, notice: 'Organization was successfully deleted.'
+      redirect_to root_path, notice: 'Organization was successfully deleted.'
     end
   end
 

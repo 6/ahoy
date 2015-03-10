@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :organizations
+  resources :organizations, only: [:create, :show, :edit, :destroy, :new]
   resources :user_organizations, only: [:create, :destroy]
   resource :user, only: [:edit, :update]
 
