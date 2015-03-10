@@ -92,6 +92,7 @@ GEM
     multi_json (1.11.0)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
+    newrelic_rpm (3.10.0.279)
     nokogiri (1.6.6.2)
       mini_portile (~> 0.6.0)
     oauth2 (1.0.0)
@@ -185,6 +186,7 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   haml-rails
   jquery-rails
+  newrelic_rpm
   omniauth-google-oauth2
   pg
   quiet_assets
