@@ -1,5 +1,5 @@
 GIT
-  remote: git@github.com:kuroneko/bootstrap-generators.git
+  remote: https://github.com/kuroneko/bootstrap-generators.git
   revision: c556e79564b04974d2641d9ba8f64f5f8af9b13c
   specs:
     bootstrap-generators (3.1.1.3)
