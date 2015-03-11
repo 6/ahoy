@@ -28,6 +28,12 @@ html, body {
 .navbar.navbar-default {
   border-radius: 0;
   border-bottom: 2px solid $yellow-30;
+  .navbar-brand {
+    padding: 0;
+    img {
+      height: $navbar-height;
+    }
+  }
   .navbar-nav {
     font-size: 17px;
   }
