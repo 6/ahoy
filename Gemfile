@@ -10,9 +10,11 @@ gem 'jquery-rails'
 gem "omniauth-google-oauth2"
 gem 'haml-rails'
 gem 'unicorn'
-gem 'bootstrap-generators'
+# This fork works with bootstrap-sass
+gem 'bootstrap-generators', git: 'git@github.com:kuroneko/bootstrap-generators.git'
 gem 'email_validator'
 gem 'twilio-ruby'
+gem 'bootstrap-sass'
 
 group :development, :test do
   gem 'byebug'
