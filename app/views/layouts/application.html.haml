@@ -11,9 +11,9 @@
     = stylesheet_link_tag 'application', media: 'all'
     = javascript_include_tag 'application'
     = csrf_meta_tags
-  %body
+  %body{class: body_classes}
     - if current_user
-      %nav.navbar.navbar-inverse
+      %nav.navbar.navbar-default
         .container
           .navbar-header
             %button.navbar-toggle.collapsed{type: "button", data: {toggle: "collapse", target: "#navbar"}}
@@ -21,17 +21,6 @@
               %span.icon-bar
               %span.icon-bar
             = link_to "Bananaphone", root_path, class: "navbar-brand"
-          %ul.nav.navbar-nav
-            %li.dropdown
-              %a.dropdown-toggle{href: "#", data: {toggle: "dropdown"}}
-                Organizations
-                %span.caret
-              %ul.dropdown-menu
-                - current_user.organizations.each do |organization|
-                  %li= link_to organization.name, organization_path(organization)
-                %li.divider
-                %li= link_to "+ New organization", new_organization_path
-
           #navbar.collapse.navbar-collapse
             %ul.nav.navbar-nav.navbar-right
               %li= link_to "Settings", edit_user_path

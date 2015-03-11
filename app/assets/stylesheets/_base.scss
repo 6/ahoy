@@ -14,3 +14,30 @@ html, body {
     @include display-important;
   }
 }
+
+.max-md-container {
+  max-width: $screen-md-min - 22;
+  margin: 0 auto;
+}
+
+.max-sm-container {
+  max-width: $screen-sm-min - 22;
+  margin: 0 auto;
+}
+
+.navbar.navbar-default {
+  border-radius: 0;
+  border-bottom: 2px solid $yellow-30;
+  .navbar-nav {
+    font-size: 17px;
+  }
+}
+
+.form-horizontal {
+  .form-group-lg {
+    .control-label {
+      font-size: 17px;
+      padding-top: 20px;
+    }
+  }
+}

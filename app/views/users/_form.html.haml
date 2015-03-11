@@ -7,18 +7,18 @@
         - @user.errors.full_messages.each do |msg|
           %li= msg
 
-  .form-group
+  .form-group.form-group-lg
     = f.label :avatar, class: 'col-sm-3 control-label'
     .col-sm-9
       = link_to image_tag(@user.gravatar_url(75)), "http://www.gravatar.com/"
       %small.help-block= link_to "Customize your avatar using Gravatar", "http://www.gravatar.com/"
 
   .form-group.form-group-lg
-    = f.label :given_name, class: 'col-sm-3 control-label'
+    = f.label :given_name, "First name", class: 'col-sm-3 control-label'
     .col-sm-9= f.text_field :given_name, class: 'form-control'
 
   .form-group.form-group-lg
-    = f.label :surname, class: 'col-sm-3 control-label'
+    = f.label :surname, "Last name", class: 'col-sm-3 control-label'
     .col-sm-9= f.text_field :surname, class: 'form-control'
 
   .form-group.form-group-lg
