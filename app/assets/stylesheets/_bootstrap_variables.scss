@@ -368,8 +368,8 @@ $navbar-default-border:            transparent;
 $navbar-default-link-color:                #333;
 $navbar-default-link-hover-color:          black;
 $navbar-default-link-hover-bg:             $yellow-30;
-$navbar-default-link-active-color:         #fff;
-$navbar-default-link-active-bg:            darken($navbar-default-bg, 10%);
+$navbar-default-link-active-color:         black;
+$navbar-default-link-active-bg: $yellow-30;
 $navbar-default-link-disabled-color:       #ccc;
 $navbar-default-link-disabled-bg:          transparent;
 

@@ -6,4 +6,8 @@ module ApplicationHelper
       "request-path#{request.path.gsub("/", "-")}",
     ].join(" ").gsub("_", "-")
   end
+
+  def active_if_current(path)
+    request.path == path ? ' active ' : ''
+  end
 end

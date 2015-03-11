@@ -24,7 +24,7 @@
               %img{src: image_path("banana4-angle.png")}
           #navbar.collapse.navbar-collapse
             %ul.nav.navbar-nav.navbar-right
-              %li= link_to "Settings", edit_user_path
+              %li{class: active_if_current(edit_user_path)}= link_to "Settings", edit_user_path
               %li= link_to "Log out", destroy_session_path
     - flash.each do |name, msg|
       = content_tag :div, class: "alert alert-#{name.to_sym == :alert ? "warning" : "success" }" do
