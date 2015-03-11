@@ -28,6 +28,7 @@ html, body {
 .navbar.navbar-default {
   border-radius: 0;
   border-bottom: 2px solid $yellow-30;
+  margin-bottom: 0;
   .navbar-brand {
     padding: 0;
     img {
@@ -46,4 +47,8 @@ html, body {
       padding-top: 20px;
     }
   }
+}
+
+.alert {
+  border-radius: 0;
 }

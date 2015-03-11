@@ -1,8 +1,6 @@
 = form_for @user, :html => { :class => "form-horizontal", :role => "form" } do |f|
   -if @user.errors.any?
     .alert.alert-danger
-      %h4= "#{pluralize(@user.errors.count, "error")} prohibited this user from being saved:"
-
       %ul
         - @user.errors.full_messages.each do |msg|
           %li= msg
@@ -15,15 +13,15 @@
 
   .form-group.form-group-lg
     = f.label :given_name, "First name", class: 'col-sm-3 control-label'
-    .col-sm-9= f.text_field :given_name, class: 'form-control'
+    .col-sm-9= f.text_field :given_name, placeholder: "First name", class: 'form-control'
 
   .form-group.form-group-lg
     = f.label :surname, "Last name", class: 'col-sm-3 control-label'
-    .col-sm-9= f.text_field :surname, class: 'form-control'
+    .col-sm-9= f.text_field :surname, placeholder: "Last name", class: 'form-control'
 
   .form-group.form-group-lg
     = f.label :email, class: 'col-sm-3 control-label'
-    .col-sm-9= f.text_field :email, class: 'form-control'
+    .col-sm-9= f.text_field :email, class: 'form-control', disabled: true
 
   .form-group.form-group-lg
     .col-sm-offset-3.col-sm-9

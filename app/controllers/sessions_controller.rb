@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
   def create
     auth = request.env['omniauth.auth']
     if auth.info.email.match(/@(gmail|googlemail)\.com\z/)
-      redirect_to root_path, alert: "Please choose log in with your work Google account (e.g. you@company.com)"
+      redirect_to root_path, alert: "Please log in with your work Google account (e.g. you@company.com)"
     else
       user = User.from_omniauth!(auth)
       session[:current_user_id] = user.id
