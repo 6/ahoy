@@ -79,7 +79,5 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  <<: *default
-  database: bananaphone_production
-  username: bananaphone
-  password: <%= ENV['BANANAPHONE_DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL'] %>
+  pool: 20
