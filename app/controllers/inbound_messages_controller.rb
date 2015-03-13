@@ -1,7 +1,7 @@
 class InboundMessagesController < ApplicationController
   include TwilioMixin
 
-  before_filter :validate_inbound_twilio_request
+  # before_filter :validate_inbound_twilio_request
   # We need to receive webhooks from Twilio that won't specify the CSRF token.
   skip_before_filter :verify_authenticity_token
 
