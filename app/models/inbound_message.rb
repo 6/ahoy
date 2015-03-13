@@ -4,4 +4,8 @@ class InboundMessage < Message
 
   belongs_to :customer, inverse_of: :inbound_messages
   belongs_to :organization, inverse_of: :inbound_messages
+
+  def delivered?
+    true
+  end
 end

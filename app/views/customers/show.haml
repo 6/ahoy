@@ -22,13 +22,19 @@
     %table.table.table-bordered
       %thead
         %tr
+          %th Status
           %th From
           %th To
-          %th{style: "min-width: 400px;"} Message
+          %th{style: "width: 300px;"} Message
           %th Sent at
       %tbody
         - @messages.each do |message|
           %tr{class: message.is_a?(InboundMessage) ? "active" : "info"}
+            %td{style: "text-align:center;"}
+              - if message.delivered?
+                %i.fa.fa-check
+              - else
+                %i.fa.fa-spinner
             - if message.is_a?(InboundMessage)
               %td= message.from_phone
               %td You

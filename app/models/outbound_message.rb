@@ -12,4 +12,8 @@ class OutboundMessage < Message
   belongs_to :organization, inverse_of: :outbound_messages
 
   validates :sender_user, presence: true
+
+  def delivered?
+    delivered_at.present?
+  end
 end
