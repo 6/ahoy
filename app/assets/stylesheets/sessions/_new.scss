@@ -1,4 +1,28 @@
-.jumbotron {
-  margin-top: 60px;
-  background-color: $yellow-30;
+.sessions-new {
+  .jumbotron {
+    margin-top: 60px;
+    height: 100%;
+    padding: 60px 84px;
+    background-color: $yellow-30;
+    border-radius: 0;
+    .feature {
+      font-size: 23px;
+      line-height: 48px;
+      i.fa {
+        font-size: 32px;
+        margin-right: 14px;
+        top: 3px;
+        position: relative;
+      }
+    }
+    .logo-container {
+      margin-bottom: 24px;
+    }
+    .logo {
+      height: 107px;
+    }
+    .sign-up-container {
+      margin-top: 40px;
+    }
+  }
 }

@@ -1,10 +1,15 @@
 .jumbotron.max-md-container
-  %h1 Bananaphone
-  %p • Send and receive SMS in real-time.
-  %p • View and update details on every customer.
-  %p • Integrates with <a href="http://www.twilio.com">Twilio</a> for scalable, worldwide SMS support.
-  %br
-  %p
+  %p.logo-container= image_tag 'ahoy.png', class: 'logo'
+  %p.feature
+    %i.fa.fa-comments
+    Send and receive text messages in real-time
+  %p.feature
+    %i.fa.fa-user
+    View and update details on customers
+  %p.feature
+    %i.fa.fa-globe
+    Powered by <a href="http://www.twilio.com">Twilio</a> for scalable, worldwide texting support
+  %p.sign-up-container
     %a.btn.btn-lg.btn-social.btn-google-plus{href: "/auth/google"}
       %i.fa.fa-google-plus
       Sign in with Google
