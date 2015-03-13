@@ -30,7 +30,7 @@ class ApplicationController < ActionController::Base
       end
     end
     if current_user.reload.organization.present?
-      redirect_to edit_organization_path(current_user.organization)
+      redirect_to edit_organization_path
     end
   end
 end
