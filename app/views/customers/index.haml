@@ -8,9 +8,9 @@
     %i.icon.icon-plus
     Compose message
 
+%br
+
 = form_for @outbound_message, html: {class: "form-horizontal collapse"} do |f|
-  %h2.col-sm-offset-2 Compose message
-  %br
   -if @outbound_message.errors.any?
     .alert.alert-danger
       %ul
@@ -18,8 +18,10 @@
           %li= msg
 
   .form-group.form-group-lg
-    = f.label :customer_phone, "To", class: 'col-sm-2 control-label'
-    .col-sm-10= f.text_field :customer_phone, placeholder: "Recipient phone number", class: 'form-control'
+    = f.label :to_phone, "To", class: 'col-sm-2 control-label'
+    .col-sm-10
+      = f.text_field :to_phone, placeholder: "Example: +16471234567", class: 'form-control'
+      %small.help-block <b>Important!</b> Phone number should start with "+1" and should not have any special characters or spaces.
 
   .form-group.form-group-lg
     = f.label :body, "Message", class: 'col-sm-2 control-label'
@@ -41,7 +43,9 @@
     %tbody
       - @customers.each do |customer|
         %tr
-          %td= "#{customer.name} #{customer.phone}"
+          %td
+            %b= customer.name
+            = customer.phone
           %td= link_to "View #{pluralize(customer.messages.count, 'message')}", customer_path(customer)
           %td= pretty_time(customer.updated_at)
 

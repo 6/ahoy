@@ -32,6 +32,6 @@ class OrganizationsController < ApplicationController
 private
 
   def organization_params
-    params.require(:organization).permit(:name, :twilio_account_sid, :twilio_auth_token)
+    params.require(:organization).permit(:name, :twilio_account_sid, :twilio_auth_token, :phone)
   end
 end

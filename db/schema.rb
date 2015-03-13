@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150313062439) do
+ActiveRecord::Schema.define(version: 20150313100312) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(version: 20150313062439) do
     t.string "twilio_auth_token",  null: false
     t.string "token",              null: false
     t.string "email_domain",       null: false
+    t.string "phone",              null: false
   end
 
   create_table "users", force: :cascade do |t|

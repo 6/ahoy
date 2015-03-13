@@ -42,4 +42,12 @@ class ApplicationController < ActionController::Base
     [(params[:page].andand.to_i || 1), 1].max
   end
   hide_action :page_default_first
+
+  def redirect_to_back(options = {})
+    if !request.env["HTTP_REFERER"].blank? and request.env["HTTP_REFERER"] != request.env["REQUEST_URI"]
+      redirect_to :back, options
+    else
+      redirect_to root_path, options
+    end
+  end
 end

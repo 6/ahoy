@@ -1,9 +1,25 @@
-- title @customer.name || @customer.phone
+- title [@customer.name, @customer.phone].join(" ")
 
 .row
   .col-sm-9
     %h3 Conversation (#{pluralize(@messages.count, 'message')})
-    %table.table
+
+    %br
+
+    = form_for @outbound_message, html: {class: "form-horizontal"} do |f|
+      = f.hidden_field :to_phone, value: @customer.phone
+      -if @outbound_message.errors.any?
+        .alert.alert-danger
+          %ul
+            - @outbound_message.errors.full_messages.each do |msg|
+              %li= msg
+
+      %p= f.text_area :body, placeholder: "Reply with up to 160 characters", class: 'form-control input-lg', maxlength: "160"
+      %p= f.submit "Send reply", class: 'btn btn-primary'
+
+    %br
+
+    %table.table.table-bordered
       %thead
         %tr
           %th From
@@ -12,12 +28,12 @@
           %th Sent at
       %tbody
         - @messages.each do |message|
-          %tr{class: ("info"  if message.is_a?(InboundMessage))}
+          %tr{class: message.is_a?(InboundMessage) ? "active" : "info"}
             - if message.is_a?(InboundMessage)
               %td= message.from_phone
               %td You
             - else
-              %td You
+              %td= message.sender_user.full_name
               %td= message.to_phone
             %td= message.body
             %td= pretty_time(message.created_at)
@@ -35,3 +51,8 @@
         %p= f.text_field :email, class: 'form-control'
 
       .form-group= f.submit class: 'btn btn-primary'
+
+:javascript
+  $(function() {
+    new ComposeMessageView({el: "#new_outbound_message"});
+  });

@@ -11,6 +11,7 @@ class CustomersController < ApplicationController
   def show
     @customer = current_organization.customers.find(params[:id])
     @messages = (@customer.inbound_messages + @customer.outbound_messages).sort_by(&:created_at).reverse
+    @outbound_message = OutboundMessage.new
   end
 
   def update

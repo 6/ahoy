@@ -8,8 +8,8 @@ class OutboundMessage < Message
   ]
   store_accessor :delivery_statuses, DELIVERY_STATUSES
 
-  belongs_to :sender, class_name: "User", inverse_of: :outbound_messages
+  belongs_to :sender_user, class_name: "User", inverse_of: :outbound_messages
   belongs_to :organization, inverse_of: :outbound_messages
 
-  validates :sender, presence: true
+  validates :sender_user, presence: true
 end
