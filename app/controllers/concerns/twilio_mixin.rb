@@ -23,7 +23,8 @@ module TwilioMixin
   def validate_inbound_twilio_request
     return true  if Rails.env.development?
 
-    validator = Twilio::Util::RequestValidator.new(current_organization.twilio_auth_token)
+    organization = Organization.find_by_token(params[:organization_token])
+    validator = Twilio::Util::RequestValidator.new(organization.twilio_auth_token)
     params = request.get? ? env['rack.request.query_hash'] : env['rack.request.form_hash']
 
     if !validator.validate(request.original_url, params, request.headers['HTTP_X_TWILIO_SIGNATURE'])
