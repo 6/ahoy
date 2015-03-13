@@ -1,43 +1,31 @@
 class OrganizationsController < ApplicationController
-  def show
-    @organization = current_user!.organizations.find(params[:id])
-  end
-
   def new
+    redirect_to edit_organization_path  if current_user!.organization.present?
     @organization = Organization.new
   end
 
   def edit
-    @organization = current_user!.organizations.find(params[:id])
-    @user_organizations = @organization.user_organizations.includes(:user)
+    @organization = current_user!.organization
   end
 
   def create
-    @organization = current_user!.organizations.build(organization_params)
+    @organization = Organization.new(organization_params.merge({
+      email_domain: current_user!.email_domain,
+    }))
     if @organization.save
-      current_user!.organizations << @organization
-      redirect_to @organization, notice: 'Organization was successfully created.'
+      @organization.users << current_user
+      redirect_to edit_organization_path, notice: 'Organization was successfully created.'
     else
       render :new
     end
   end
 
   def update
-    @organization = current_user!.organizations.find(params[:id])
+    @organization = current_user!.organization
     if @organization.update(organization_params)
-      redirect_to @organization, notice: 'Organization was successfully updated.'
+      redirect_to edit_organization_path, notice: 'Organization was successfully updated.'
     else
       render :edit
-    end
-  end
-
-  def destroy
-    @organization = current_user!.organizations.find(params[:id])
-    if @organization.users.count > 1
-      redirect_to edit_organization_path(@organization), notice: "Can't delete an organization with users."
-    else
-      @organization.destroy!
-      redirect_to root_path, notice: 'Organization was successfully deleted.'
     end
   end
 

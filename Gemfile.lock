@@ -220,6 +220,7 @@ DEPENDENCIES
   email_validator
   haml-rails
   jquery-rails
+  mail
   newrelic_rpm
   omniauth-google-oauth2
   pg

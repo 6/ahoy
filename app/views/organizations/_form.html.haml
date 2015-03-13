@@ -1,4 +1,4 @@
-= form_for @organization, html: {class: "form-horizontal"} do |f|
+= form_for @organization, url: organization_path, html: {class: "form-horizontal"} do |f|
   -if @organization.errors.any?
     .alert.alert-danger
       %ul

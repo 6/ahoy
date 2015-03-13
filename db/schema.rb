@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150310034504) do
+ActiveRecord::Schema.define(version: 20150313042714) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,16 +21,8 @@ ActiveRecord::Schema.define(version: 20150310034504) do
     t.string "twilio_account_sid", null: false
     t.string "twilio_auth_token",  null: false
     t.string "token",              null: false
+    t.string "email_domain",       null: false
   end
-
-  create_table "user_organizations", force: :cascade do |t|
-    t.integer  "user_id",         null: false
-    t.integer  "organization_id", null: false
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-  end
-
-  add_index "user_organizations", ["user_id", "organization_id"], name: "index_user_organizations_on_user_id_and_organization_id", unique: true, using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "given_name",       null: false
@@ -42,6 +34,9 @@ ActiveRecord::Schema.define(version: 20150310034504) do
     t.datetime "oauth_expires_at", null: false
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
+    t.integer  "organization_id"
   end
+
+  add_index "users", ["organization_id"], name: "index_users_on_organization_id", using: :btree
 
 end

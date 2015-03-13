@@ -1,36 +1,22 @@
 .page-header
-  %h1 Editing organization
+  %h1 Edit organization
 
 = render 'form'
-%hr
 
-%h2 Delete organization
-= link_to 'Delete', @organization, :data => { confirm: 'Are you sure?' }, :method => :delete, class: 'btn btn-danger'
-%small.help-block Note: You must remove all team members (excluding yourself) first.
+%br
 
-%hr
-%h2 Team members
+.page-header
+  %h1 Team members
 
 %table.table
   %thead
     %tr
-      %th User
-      %th Actions
+      %th Name
+      %th Email
   %tbody
-    - @user_organizations.each do |user_organization|
-      - user = user_organization.user
+    - @organization.users.each do |user|
       %tr
-        %td= "#{user.full_name} (#{user.email})"
-        %td
-          - if user == current_user
-            You can't remove yourself.
-          - else
-            = link_to "Remove", user_organization_path(user_organization), method: :delete, class: 'btn btn-danger'
+        %td= user.full_name
+        %td= user.email
 
-
-= form_tag user_organizations_path, class: "form-horizontal form-inline" do
-  .form-group.form-group-lg
-    = hidden_field_tag :organization_id, @organization.id
-    = text_field_tag :email, nil, placeholder: "Add user by email", class: "form-control"
-  .form-group
-    = submit_tag "Add", class: "btn btn-primary btn-lg"
+.well To add more team members, ask them to sign in with their work Google email address. They will automatically be added.

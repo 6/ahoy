@@ -1,12 +1,6 @@
 class SessionsController < ApplicationController
   def new
-    if current_user
-      if current_user.organizations.present?
-        redirect_to organization_path(current_user.organizations.first)
-      else
-        redirect_to new_organization_path
-      end
-    end
+    handle_current_user!  if current_user
   end
 
   def create

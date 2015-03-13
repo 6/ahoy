@@ -15,6 +15,7 @@ gem 'bootstrap-generators', git: 'https://github.com/kuroneko/bootstrap-generato
 gem 'email_validator'
 gem 'twilio-ruby'
 gem 'bootstrap-sass'
+gem 'mail'
 
 group :development, :test do
   gem 'byebug'

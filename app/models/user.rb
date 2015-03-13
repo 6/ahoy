@@ -5,8 +5,7 @@ class User < ActiveRecord::Base
   validates :provider, presence: true, inclusion: {in: %w[google]}
   validates :uid, presence: true
 
-  has_many :user_organizations, dependent: :destroy
-  has_many :organizations, through: :user_organizations
+  belongs_to :organization, inverse_of: :users
 
   def self.from_omniauth!(auth)
     user = User.where({
@@ -37,5 +36,9 @@ class User < ActiveRecord::Base
       s: size,
     }
     "https://secure.gravatar.com/avatar/#{hash}?#{query_parameters.to_param}"
+  end
+
+  def email_domain
+    Mail::Address.new(email).domain
   end
 end
