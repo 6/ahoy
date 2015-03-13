@@ -2,11 +2,15 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
-  helper_method :current_user
+  helper_method :current_user, :current_organization
   force_ssl if: :ssl_configured?
 
   def current_user
     @current_user ||= User.includes(:organization).find(session[:current_user_id])  if session[:current_user_id]
+  end
+
+  def current_organization
+    current_user!.organization
   end
 
   def current_user!
@@ -30,7 +34,12 @@ class ApplicationController < ActionController::Base
       end
     end
     if current_user.reload.organization.present?
-      redirect_to edit_organization_path
+      redirect_to customers_path
     end
   end
+
+  def page_default_first
+    [(params[:page].andand.to_i || 1), 1].max
+  end
+  hide_action :page_default_first
 end

@@ -8,6 +8,10 @@ class Organization < ActiveRecord::Base
   validates :email_domain, presence: true, uniqueness: true
 
   has_many :users, inverse_of: :organization
+  has_many :customers, inverse_of: :organization
+  has_many :messages, inverse_of: :organization
+  has_many :inbound_messages, inverse_of: :organization
+  has_many :outbound_messages, inverse_of: :organization
 
   def twilio_client
     @twilio_client ||= Twilio::REST::Client.new(twilio_account_sid, twilio_auth_token)

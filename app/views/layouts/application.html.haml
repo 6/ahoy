@@ -3,7 +3,7 @@
   %head
     %meta{:charset => "utf-8"}
     %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}
-    %title Ahoy!
+    %title= yield(:title).presence || "Ahoy!"
     %link{href: "//fonts.googleapis.com/css?family=Lato:400,700,400italic", rel: "stylesheet"}
     %link{rel: "stylesheet", href: "//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"}
     %script{src: "//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"}
@@ -22,13 +22,14 @@
               %span.icon-bar
             %a.navbar-brand{href: root_path}
               %img{src: image_path("ahoy.png")}
-          #navbar.collapse.navbar-collapse
-            - if current_user.organization.present?
+          - if current_user.organization.present?
+            #navbar.collapse.navbar-collapse
               %ul.nav.navbar-nav
-                %li= link_to "Organization", edit_organization_path
-            %ul.nav.navbar-nav.navbar-right
-              %li{class: active_if_current(edit_user_path)}= link_to "Settings", edit_user_path
-              %li= link_to "Log out", destroy_session_path
+                %li= link_to "Conversations", customers_path
+              %ul.nav.navbar-nav.navbar-right
+                %li{class: active_if_current(edit_organization_path)}= link_to "Organization", edit_organization_path
+                %li{class: active_if_current(edit_user_path)}= link_to "Settings", edit_user_path
+                %li= link_to "Log out", destroy_session_path
     - flash.each do |name, msg|
       = content_tag :div, class: "alert alert-#{name.to_sym == :alert ? "warning" : "success" }" do
         = msg

@@ -6,6 +6,15 @@
 %br
 
 .page-header
+  %h1 Twilio configuration
+
+%p Paste the following URL into the Twilio Messaging "Request URL", and select <b>HTTP POST</b> as the request method.
+%p
+  %code= inbound_message_url(organization_token: current_organization.token)
+
+%br
+
+.page-header
   %h1 Team members
 
 %table.table

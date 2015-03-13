@@ -11,10 +11,41 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150313042714) do
+ActiveRecord::Schema.define(version: 20150313062439) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "hstore"
+
+  create_table "customers", force: :cascade do |t|
+    t.integer  "organization_id", null: false
+    t.string   "phone",           null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.string   "name"
+    t.string   "email"
+  end
+
+  add_index "customers", ["phone"], name: "index_customers_on_phone", using: :btree
+
+  create_table "messages", force: :cascade do |t|
+    t.integer  "organization_id",                            null: false
+    t.string   "type",                                       null: false
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
+    t.string   "body",              limit: 160,              null: false
+    t.string   "twilio_message_id"
+    t.integer  "customer_id",                                null: false
+    t.string   "from_phone",                                 null: false
+    t.string   "to_phone",                                   null: false
+    t.json     "twilio_data"
+    t.integer  "sender_user_id"
+    t.hstore   "delivery_statuses",             default: {}, null: false
+  end
+
+  add_index "messages", ["customer_id"], name: "index_messages_on_customer_id", using: :btree
+  add_index "messages", ["sender_user_id"], name: "index_messages_on_sender_user_id", using: :btree
+  add_index "messages", ["twilio_message_id"], name: "index_messages_on_twilio_message_id", using: :btree
 
   create_table "organizations", force: :cascade do |t|
     t.string "name",               null: false

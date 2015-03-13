@@ -1,0 +1,53 @@
+- title "Conversations"
+
+.page-header
+  %h1 Conversations
+
+%p
+  %a.btn.btn-primary{href: "#new_outbound_message", data: {toggle: "collapse"}}
+    %i.icon.icon-plus
+    Compose message
+
+= form_for @outbound_message, html: {class: "form-horizontal collapse"} do |f|
+  %h2.col-sm-offset-2 Compose message
+  %br
+  -if @outbound_message.errors.any?
+    .alert.alert-danger
+      %ul
+        - @outbound_message.errors.full_messages.each do |msg|
+          %li= msg
+
+  .form-group.form-group-lg
+    = f.label :customer_phone, "To", class: 'col-sm-2 control-label'
+    .col-sm-10= f.text_field :customer_phone, placeholder: "Recipient phone number", class: 'form-control'
+
+  .form-group.form-group-lg
+    = f.label :body, "Message", class: 'col-sm-2 control-label'
+    .col-sm-10= f.text_area :body, placeholder: "Enter up to 160 characters", class: 'form-control', maxlength: "160"
+
+  .form-group.form-group-lg
+    .col-sm-offset-2.col-sm-10
+      = f.submit "Send", class: 'btn btn-primary btn-lg'
+
+- if @count == 0
+  .well You have no conversations yet.
+- else
+  %table.table
+    %thead
+      %tr
+        %th Customer
+        %th Converation
+        %th Updated
+    %tbody
+      - @customers.each do |customer|
+        %tr
+          %td= "#{customer.name} #{customer.phone}"
+          %td= link_to "View #{pluralize(customer.messages.count, 'message')}", customer_path(customer)
+          %td= pretty_time(customer.updated_at)
+
+  %p= paginate @customers, theme: 'twitter-bootstrap-3'
+
+:javascript
+  $(function() {
+    new ComposeMessageView({el: "#new_outbound_message"});
+  });

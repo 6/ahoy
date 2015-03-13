@@ -14,7 +14,7 @@ class OrganizationsController < ApplicationController
     }))
     if @organization.save
       @organization.users << current_user
-      redirect_to edit_organization_path, notice: 'Organization was successfully created.'
+      redirect_to customers_path, notice: 'Organization was successfully created.'
     else
       render :new
     end

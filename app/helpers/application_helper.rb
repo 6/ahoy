@@ -7,6 +7,10 @@ module ApplicationHelper
     ].join(" ").gsub("_", "-")
   end
 
+  def title(page_title)
+    content_for(:title) { page_title }
+  end
+
   def active_if_current(path)
     request.path == path ? ' active ' : ''
   end
@@ -17,5 +21,10 @@ module ApplicationHelper
       path == request.path
     end
     any_active ? ' active ' : ''
+  end
+
+  def pretty_time(time)
+    return  unless time.present?
+    (time.strftime("%-m/%-d/%Y") + "<span class='hidden-mobile'> (#{time_ago_in_words(time)} ago)</span>").html_safe
   end
 end

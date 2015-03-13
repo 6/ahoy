@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   validates :uid, presence: true
 
   belongs_to :organization, inverse_of: :users
+  has_many :outbound_messages, inverse_of: :sender
 
   def self.from_omniauth!(auth)
     user = User.where({

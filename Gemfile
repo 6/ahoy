@@ -16,6 +16,9 @@ gem 'email_validator'
 gem 'twilio-ruby'
 gem 'bootstrap-sass'
 gem 'mail'
+gem 'kaminari'
+gem 'bootstrap-kaminari-views'
+gem 'andand'
 
 group :development, :test do
   gem 'byebug'
