@@ -10,7 +10,7 @@
 
 %p Paste the following URL into the Twilio Messaging "Request URL", and select <b>HTTP POST</b> as the request method.
 %p
-  %code= inbound_message_url(organization_token: current_organization.token, secure: Rails.env.production?)
+  %code= inbound_message_url(organization_token: current_organization.token, protocol: 'https')
 
 %br
 

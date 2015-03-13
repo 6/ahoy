@@ -11,7 +11,7 @@ class OutboundMessagesController < ApplicationController
       from: @outbound_message.from_phone,
       to: @outbound_message.to_phone,
       body: @outbound_message.body,
-      status_callback: message_delivery_status_url(organization_token: current_organization.token, secure: Rails.env.production?),
+      status_callback: message_delivery_status_url(organization_token: current_organization.token,  protocol: 'https'),
     })
     @outbound_message.update_attributes!({
       twilio_message_id: twilio_message.sid,
