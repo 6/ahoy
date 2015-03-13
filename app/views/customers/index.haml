@@ -34,12 +34,12 @@
 - if @count == 0
   .well You have no conversations yet.
 - else
-  %table.table
+  %table.table.table-bordered
     %thead
       %tr
         %th Customer
         %th Converation
-        %th Updated
+        %th Last Updated
     %tbody
       - @customers.each do |customer|
         %tr
