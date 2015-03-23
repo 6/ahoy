@@ -22,8 +22,18 @@ gem 'andand'
 
 group :development, :test do
   gem 'byebug'
-  gem 'web-console', '~> 2.0'
+  gem 'better_errors'
+  gem 'binding_of_caller'
   gem 'spring'
+  gem 'rspec-rails'
+  gem 'rspec-its'
+  gem 'rspec-nc'
+  gem 'factory_girl_rails'
+end
+
+group :test do
+  gem 'webmock'
+  gem 'database_cleaner', git: 'https://github.com/bmabey/database_cleaner.git'
 end
 
 group :development do
