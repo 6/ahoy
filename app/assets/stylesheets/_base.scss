@@ -55,3 +55,23 @@ html, body {
 .alert {
   border-radius: 0;
 }
+
+.page-header {
+  h1 {
+    margin: 44px 0 12px;
+  }
+}
+
+.table {
+  thead {
+    tr {
+      background-color: #eee;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-size: 0.9em;
+    }
+  }
+  tbody {
+    font-size: 1.3em;
+  }
+}

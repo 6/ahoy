@@ -16,7 +16,7 @@ $gray-lighter:           #ecf0f1; // #eee
 
 $yellow-10: #FFF95E;
 $yellow-20: #FFF25E;
-$yellow-30: #FFE55E;
+$yellow-30: #FDDE3B;
 $yellow-40: #FFD85E;
 
 $brand-primary:         #444;
@@ -127,9 +127,9 @@ $caret-width-large:         5px;
 //## Customizes the `.table` component with basic values, each used across all table variations.
 
 //** Padding for `<th>`s and `<td>`s.
-$table-cell-padding:            8px;
+$table-cell-padding:            16px;
 //** Padding for cells in `.table-condensed`.
-$table-condensed-cell-padding:  5px;
+$table-condensed-cell-padding:  8px;
 
 //** Default background color used for all tables.
 $table-bg:                      transparent;
@@ -140,7 +140,7 @@ $table-bg-hover:                $gray-lighter;
 $table-bg-active:               $table-bg-hover;
 
 //** Border color for table and cell borders.
-$table-border-color:            black;
+$table-border-color:            #ccc;
 
 
 //== Buttons
