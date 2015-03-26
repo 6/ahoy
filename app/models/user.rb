@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  validates :email, presence: true, email: true
+  validates :email, presence: true, email: true, uniqueness: {scope: [:organization_id]}
   validates :given_name, presence: true
   validates :surname, presence: true
   validates :provider, presence: true, inclusion: {in: %w[google]}
