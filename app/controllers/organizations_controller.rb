@@ -1,7 +1,7 @@
 class OrganizationsController < ApplicationController
   def new
     redirect_to edit_organization_path  if current_user!.organization.present?
-    @organization = Organization.new
+    @organization = Organization.new(email_domain: current_user!.email_domain)
   end
 
   def edit

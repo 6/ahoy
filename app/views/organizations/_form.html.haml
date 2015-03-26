@@ -10,6 +10,10 @@
     .col-sm-9= f.text_field :name, placeholder: "Your company", class: 'form-control'
 
   .form-group.form-group-lg
+    = f.label :email_domain, "Organization domain", class: 'col-sm-3 control-label'
+    .col-sm-9= f.text_field :email_domain, disabled: true, class: 'form-control'
+
+  .form-group.form-group-lg
     = f.label :phone, "Twilio phone number", class: 'col-sm-3 control-label'
     .col-sm-9= f.text_field :phone, placeholder: "Your Twilio phone number", class: 'form-control'
 
