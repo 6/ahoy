@@ -25,7 +25,7 @@
           - if current_user.organization.present?
             #navbar.collapse.navbar-collapse
               %ul.nav.navbar-nav
-                %li= link_to "Conversations", customers_path
+                %li{class: active_if_current(customers_path)}= link_to "Conversations", customers_path
               %ul.nav.navbar-nav.navbar-right
                 %li{class: active_if_current(edit_organization_path)}= link_to "Organization", edit_organization_path
                 %li{class: active_if_current(edit_user_path)}= link_to "Settings", edit_user_path
