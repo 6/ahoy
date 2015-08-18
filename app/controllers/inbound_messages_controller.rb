@@ -6,7 +6,7 @@ class InboundMessagesController < ApplicationController
   skip_before_filter :verify_authenticity_token
 
   def create
-    organization = Organization.find_by_token(params[:organization_token])
+    organization = Organization.find_by_token!(params[:organization_token])
     organization.inbound_messages.create!({
       from_phone: params["From"],
       to_phone: params["To"],

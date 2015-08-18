@@ -4,6 +4,13 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   helper_method :current_user, :current_organization
 
+  class Unauthorized < Exception
+  end
+
+  rescue_from Unauthorized do |exception|
+    logout_user
+  end
+
   def current_user
     @current_user ||= User.includes(:organization).find(session[:current_user_id])  if session[:current_user_id]
   end
@@ -13,11 +20,16 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user!
-    current_user or redirect_to root_path
+    current_user or raise Unauthorized
   end
 
   def enforce_logged_in!
     redirect_to root_path  unless current_user
+  end
+
+  def logout_user
+    reset_session
+    redirect_to root_path
   end
 
   def handle_current_user!
