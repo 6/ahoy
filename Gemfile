@@ -19,7 +19,7 @@ gem 'mail'
 gem 'kaminari'
 gem 'bootstrap-kaminari-views'
 gem 'andand'
-# gem 'rollbar'
+gem 'rollbar'
 
 group :development, :test do
   gem 'byebug'
