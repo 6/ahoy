@@ -19,11 +19,6 @@ RSpec.configure do |config|
     DatabaseCleaner.clean_with(:truncation)
     begin
       DatabaseCleaner.start
-      unless ENV["LINT_DISABLED"]
-        puts "Running FactoryGirl.lint"
-        FactoryGirl.lint
-        puts "Finished FactoryGirl.lint"
-      end
     ensure
       DatabaseCleaner.clean
     end
