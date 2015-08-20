@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
-  helper_method :current_user, :current_organization
+  helper_method :current_user, :current_organization, :logged_in?
 
   class Unauthorized < Exception
   end
@@ -24,25 +24,16 @@ class ApplicationController < ActionController::Base
   end
 
   def enforce_logged_in!
-    redirect_to root_path  unless current_user
+    redirect_to new_session_path  unless logged_in?
+  end
+
+  def logged_in?
+    current_user.present?
   end
 
   def logout_user
     reset_session
-    redirect_to root_path
-  end
-
-  def handle_current_user!
-    if !current_user.organization.present?
-      if organization = Organization.find_by_email_domain(current_user.email_domain)
-        organization.users << current_user
-      else
-        redirect_to new_organization_path
-      end
-    end
-    if current_user.reload.organization.present?
-      redirect_to customers_path
-    end
+    redirect_to new_session_path
   end
 
   def page_default_first
@@ -54,7 +45,7 @@ class ApplicationController < ActionController::Base
     if !request.env["HTTP_REFERER"].blank? and request.env["HTTP_REFERER"] != request.env["REQUEST_URI"]
       redirect_to :back, options
     else
-      redirect_to root_path, options
+      redirect_to '/', options
     end
   end
 end

@@ -17,6 +17,7 @@ RSpec.configure do |config|
   config.before(:suite) do
     DatabaseCleaner.strategy = :transaction
     DatabaseCleaner.clean_with(:truncation)
+    OmniAuth.config.test_mode = true
     begin
       DatabaseCleaner.start
     ensure

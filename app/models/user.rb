@@ -3,10 +3,12 @@ class User < ActiveRecord::Base
   validates :given_name, presence: true
   validates :surname, presence: true
   validates :provider, presence: true, inclusion: {in: %w[google]}
-  validates :uid, presence: true
+  validates :uid, presence: true, uniqueness: {scope: [:provider]}
 
   belongs_to :organization, inverse_of: :users
   has_many :outbound_messages, inverse_of: :sender
+
+  after_create :add_to_existing_organization!
 
   def self.from_omniauth!(auth)
     user = User.where({
@@ -41,5 +43,13 @@ class User < ActiveRecord::Base
 
   def email_domain
     Mail::Address.new(email).domain
+  end
+
+private
+
+  def add_to_existing_organization!
+    if organization = Organization.find_by_email_domain(email_domain)
+      organization.users << self
+    end
   end
 end

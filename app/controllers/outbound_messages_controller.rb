@@ -13,7 +13,7 @@ class OutboundMessagesController < ApplicationController
       body: @outbound_message.body,
       status_callback: message_delivery_status_url(organization_token: current_organization.token,  protocol: 'https'),
     })
-    @outbound_message.update_attributes!({
+    @outbound_message.update!({
       twilio_message_id: twilio_message.sid,
     })
 

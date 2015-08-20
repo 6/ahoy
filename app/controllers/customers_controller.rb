@@ -16,8 +16,8 @@ class CustomersController < ApplicationController
 
   def update
     @customer = current_organization.customers.find(params[:id])
-    @customer.update_attributes!(customer_params)
-    redirect_to customer_path(@customer), notice: "Saved!"
+    @customer.update!(customer_params)
+    redirect_to_back notice: "Saved!"
   end
 
 private

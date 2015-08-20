@@ -1,0 +1,2 @@
+describe Customer do
+end
