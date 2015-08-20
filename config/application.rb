@@ -33,5 +33,7 @@ module Ahoy
     }
 
     config.action_mailer.default_url_options = { host: Rails.application.secrets.action_mailer.fetch("default_host") }
+
+    config.react.addons = true
   end
 end

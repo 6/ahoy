@@ -20,6 +20,7 @@ gem 'kaminari'
 gem 'bootstrap-kaminari-views'
 gem 'andand'
 gem 'rollbar'
+gem 'react-rails'
 
 group :development, :test do
   gem 'byebug'
