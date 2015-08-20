@@ -1,0 +1,3 @@
+# Travis will use Ruby version specified in `.ruby-version`
+language: ruby
+bundler_args: --without production
