@@ -76,3 +76,11 @@ html, body {
     font-size: 1.3em;
   }
 }
+
+.btn-google-plus {
+  background-color: #dd4b39;
+  color: white;
+  &:hover {
+    background-color: darken(#dd4b39, 5%);
+  }
+}
