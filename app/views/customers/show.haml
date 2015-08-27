@@ -32,9 +32,9 @@
           %tr{class: message.is_a?(InboundMessage) ? "active" : "info"}
             %td{style: "text-align:center;"}
               - if message.delivered?
-                %i.fa.fa-check
+                %i.glyphicon.glyphicon-ok
               - else
-                %i.fa.fa-spinner
+                %i.glyphicon.glyphicon-refresh
             - if message.is_a?(InboundMessage)
               %td= message.from_phone
               %td You
