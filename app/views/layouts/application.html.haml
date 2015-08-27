@@ -4,9 +4,13 @@
     %meta{:charset => "utf-8"}
     %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}
     %title= yield(:title).presence || "Ahoy!"
-    %link{href: "//fonts.googleapis.com/css?family=Lato:400,700,400italic", rel: "stylesheet"}
-    %script{src: "//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"}
-    %script{src: "//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"}
+    - if Rails.env.production?
+      %link{href: "//fonts.googleapis.com/css?family=Lato:400,700,400italic", rel: "stylesheet"}
+      %script{src: "//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"}
+      %script{src: "//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"}
+    - else
+      = stylesheet_link_tag "local/vendor", media: "all"
+      = javascript_include_tag "local/vendor"
     = stylesheet_link_tag 'application', media: 'all'
     = javascript_include_tag 'application'
     = csrf_meta_tags
